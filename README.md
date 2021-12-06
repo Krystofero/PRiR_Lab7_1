@@ -158,8 +158,8 @@ W mainie najpierw inicjalizujemy wszystkie potrzebne zmienne ( w tym funkcję MP
 	int main(int argc, char *argv[]) {
 
 		MPI_Init(&argc, &argv);    //inicjalizacja środowiska MPI
-		MPI_Comm_rank(MPI_COMM_WORLD,&nr_procesu);      // okresla liczbę uruchomionych procesow tworzących sieć
-		MPI_Comm_size(MPI_COMM_WORLD,&liczba_procesow); // okresla numer aktualnego procesu
+		MPI_Comm_rank(MPI_COMM_WORLD,&nr_procesu);      // okresla numer aktualnego procesu
+		MPI_Comm_size(MPI_COMM_WORLD,&liczba_procesow); // okresla liczbę uruchomionych procesow tworzących sieć
 		srand(time(NULL));
 		if(nr_procesu == 0)
 			Sklep(liczba_procesow);
