@@ -155,17 +155,17 @@ W funkcji Zamowienie() odczytywane są kolejne stany zamowienia i wysyłane zmia
 W mainie najpierw inicjalizujemy wszystkie potrzebne zmienne ( w tym funkcję MPI_Init - ma ona za zadanie zainicjalizowanie środowiska MPI dla procesu, który ją wywołuje Inicjalizacja informuje środowisko uruchomieniowe MPI o nowym procesie). Jeżeli to pierwszy proces to inicjujemy nasz Sklep, a każdy następny jest już Zamówieniem:
 
 
-int main(int argc, char *argv[]) {
-	
-	MPI_Init(&argc, &argv);    //inicjalizacja środowiska MPI
-	MPI_Comm_rank(MPI_COMM_WORLD,&nr_procesu);      // okresla liczbę uruchomionych procesow tworzących sieć
-	MPI_Comm_size(MPI_COMM_WORLD,&liczba_procesow); // okresla numer aktualnego procesu
-	srand(time(NULL));
-	if(nr_procesu == 0)
-		Sklep(liczba_procesow);
-	else 
-		Zamowienie();
-	MPI_Finalize(); //funkcja kończy pracę w trybie MPI
-	return 0;
-	
-}
+	int main(int argc, char *argv[]) {
+
+		MPI_Init(&argc, &argv);    //inicjalizacja środowiska MPI
+		MPI_Comm_rank(MPI_COMM_WORLD,&nr_procesu);      // okresla liczbę uruchomionych procesow tworzących sieć
+		MPI_Comm_size(MPI_COMM_WORLD,&liczba_procesow); // okresla numer aktualnego procesu
+		srand(time(NULL));
+		if(nr_procesu == 0)
+			Sklep(liczba_procesow);
+		else 
+			Zamowienie();
+		MPI_Finalize(); //funkcja kończy pracę w trybie MPI
+		return 0;
+
+	}
